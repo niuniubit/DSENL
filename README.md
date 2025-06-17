@@ -17,7 +17,7 @@ $$
 $$
 
 $$
-\Omega = \left\{ S_{\text{subset}} \subseteq \mathcal{I} \mid |S_{\text{subset}}| = \lfloor 0.2n \rfloor \right\}
+\Omega = \{ S_{\text{subset}} \subseteq \mathcal{I} \mid |S_{\text{subset}}| = \lfloor 0.2n \rfloor \}
 $$
 
 Where:
@@ -56,7 +56,7 @@ $$
 $$
 
 $$
-\Theta = \left\{ M_{\text{subset}} \subseteq \mathcal{J} \mid |M_{\text{subset}}| = \lfloor 0.2m \rfloor \right\}
+\Theta = \{ M_{\text{subset}} \subseteq \mathcal{J} \mid |M_{\text{subset}}| = \lfloor 0.2m \rfloor \}
 $$
 
 $$

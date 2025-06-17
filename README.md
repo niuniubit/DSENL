@@ -8,31 +8,40 @@ Run main_DSENL.m
 
 ### 1. Mathematical derivation of noisy labels settings
 
-Specifically, Assuming a rate of noise (RON) of 0.2. Let
+### 1. Mathematical derivation of noisy labels settings
+
+Specifically, assuming a rate of noise (RON) of 0.2, define:
+
 $$
 \mathcal{I} = \{(i,j) \mid y_i = 0,\ \forall i \in [1, n],\ j \in [1, C] \}
 $$
 
 $$
-\Omega = \{ S_{\text{subset}} \subseteq \mathcal{I} \mid |S_{\text{subset}}| = \lfloor 0.2n \rfloor\}
+\Omega = \left\{ S_{\text{subset}} \subseteq \mathcal{I} \mid |S_{\text{subset}}| = \lfloor 0.2n \rfloor \right\}
 $$
 
-where \( n \) is the number of samples, \( C \) is the total number of classes, and \( k =$$ \lfloor 0.2n \rfloor$$ \).  
-\($$ S_{\text{subset}} = \{(i_1, j_1), (i_2, j_2),  ... , (i_k, j_k)\} $$\) denotes a subset of \( k \) index pairs.
+Where:
 
-The selected index set is defined as
+- $\mathcal{I}$ denotes the set of index pairs where the label is 0.
+- $\Omega$ is the set of all possible mislabeled subsets.
+- $n$ is the number of samples.
+- $C$ is the total number of classes.
+- $k = \lfloor 0.2n \rfloor$ is the number of indices to be randomly chosen.
+- $S_{\text{subset}} = \{(i_1, j_1), (i_2, j_2), \ldots, (i_k, j_k)\}$ is a subset from $\Omega$.
+
+The mislabeled index set is defined as:
 
 $$
 D_1 = \{(i,j) \mid (i,j) \in S'\}
 $$
 
-where \( S' \) is a randomly selected index subset drawn uniformly from \( $$\Omega$$).  
-The probability distribution satisfies the uniform condition:
+Where $S'$ is a randomly selected subset drawn uniformly from $\Omega$, with the probability distribution satisfying:
+
 $$
 \mathbb{P}(S' = S) = \frac{1}{|\Omega|} = \frac{1}{\binom{nm}{k}}, \quad \forall S \in \Omega
 $$
 
-where
+Where:
 
 $$
 \binom{nm}{k} = \frac{(nm)!}{k!(nm - k)!}
@@ -40,15 +49,37 @@ $$
 
 denotes the binomial coefficient.
 
-Assuming the original label matrix is \( Y \), the noisy label matrix \( Y' \) is defined as:
+Similarly, define the missing label set as:
+
+$$
+\mathcal{J} = \{(i,j) \mid y_i = 1,\ \forall i \in [1, m],\ j \in [1, C] \}
+$$
+
+$$
+\Theta = \left\{ M_{\text{subset}} \subseteq \mathcal{J} \mid |M_{\text{subset}}| = \lfloor 0.2m \rfloor \right\}
+$$
+
+$$
+D_2 = \{(i,j) \mid (i,j) \in M'\}
+$$
+
+Where:
+
+- $\mathcal{J}$ is the set of index pairs where the label is 1.
+- $\Theta$ is the set of missing label subsets.
+- $m$ is the number of samples.
+- $M'$ is a randomly selected subset from $\Theta$.
+
+Assuming the original label matrix is $Y$, the noisy label matrix $Y'$ is defined as:
 
 $$
 Y'_{i,j} = 
 \begin{cases}
-1 - Y_{i,j}, & \text{if } (i,j) \in D_1 \\
+1 - Y_{i,j}, & \text{if } (i,j) \in D_1 \cap (i,j) \in D_2 \\
 Y_{i,j}, & \text{otherwise}
 \end{cases}
 $$
+
 
 ### 2. Random Number Experiment
 

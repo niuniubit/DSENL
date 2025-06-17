@@ -14,7 +14,7 @@ $$
 $$
 
 $$
-\Omega = \left\{ S_{\text{subset}} \subseteq \mathcal{I} \mid |S_{\text{subset}}| = \lfloor 0.2n \rfloor \right\}
+\Omega = \{ S_{\text{subset}} \subseteq \mathcal{I} \mid |S_{\text{subset}}| = \lfloor 0.2n \rfloor\}
 $$
 
 where \( n \) is the number of samples, \( C \) is the total number of classes, and \( k =$$ \lfloor 0.2n \rfloor$$ \).  

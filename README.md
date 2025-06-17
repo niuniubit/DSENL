@@ -72,13 +72,11 @@ Where:
 
 Assuming the original label matrix is $Y$, the noisy label matrix $Y'$ is defined as:
 
-$$
 Y'_{i,j} = 
 \begin{cases}
-1 - Y_{i,j}, & \text{if } (i,j) \in D_1 \cap (i,j) \in D_2 \\
+1 - Y_{i,j}, & \text{if } (i,j) \in D_1 \cup (i,j) \in D_2 \\
 Y_{i,j}, & \text{otherwise}
 \end{cases}
-$$
 
 
 ### 2. Random Number Experiment
